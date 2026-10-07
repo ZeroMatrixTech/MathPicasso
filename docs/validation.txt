@@ -1,0 +1,8 @@
+Validation date: 2026-10-07 (Europe/Budapest)
+MATLAB: 26.2.0.3386108 (R2026b), local installation
+Command: addpath(project); verify_mathpicasso; mathpicasso('Visible','off'); mathpicasso('Visible','off','Grid',false,'Palette','ink');
+PASS: 84 expressions; 2 original hidden expressions; strict intervals; base-10 logarithms; original empty curves 55 and 56.
+PNG images visually reviewed; PDF and editable FIG exported.
+No Symbolic Math Toolbox used. Earlier sandbox launch exited 1 without diagnostics; verified run used normal host permissions.
+MATLAB warns dense vector export may take time; exports are retained as vectors.
+Cross-version execution (including R2020a) has not been tested.
