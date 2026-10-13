@@ -20,7 +20,29 @@ verify_mathpicasso                    % 公式和定义域检查
 
 需要支持 `exportgraphics` 的 MATLAB R2020a 或更新版本；不需要 Symbolic Math Toolbox 或第三方工具箱。此版本实际验证环境见 `docs/validation.txt`。可用 `'Export',false` 只看图，用 `'Visible','off'` 批量导出。
 
-生成文件位于 `outputs/`：PNG 图片、PDF 矢量图、可继续编辑的 MATLAB FIG。绘图是公式采样，默认每条 1600 点，可用 `'Samples',4000` 提高曲线密度。不是图片描边，也没有补画截图里未显示的公式。
+生成文件位于项目目录下的 `outputs/`（与 MATLAB 当前工作目录无关）：PNG 图片、PDF 矢量图、可继续编辑的 MATLAB FIG。绘图是公式采样，默认每条 1600 点，可用 `'Samples',4000` 提高曲线密度。不是图片描边，也没有补画截图里未显示的公式。
+
+## 参数与导出行为
+
+| 参数 | 默认值 | 含义 |
+|---|---|---|
+| `Animate` | `false` | 逐条绘制；不是动画视频或 GIF 导出 |
+| `Grid` | `true` | 坐标网格；关闭时隐藏坐标轴 |
+| `Palette` | `'original'` | 原色；`'ink'` 为黑白线稿 |
+| `Export` | `true` | 导出 PNG、矢量 PDF 和可编辑 FIG |
+| `Visible` | `'on'` | `'off'` 用于无窗口绘图 |
+| `Samples` | `1600` | 每条曲线采样数，必须是至少 100 的有限整数 |
+
+文件名为 `osage-original.*` 或 `osage-ink.*`；关闭网格时增加 `-clean`。
+相同配色和网格配置会写入相同文件名，重新运行前另存需要保留的产物。
+`Animate`、`Samples` 不进入文件名。函数返回图窗和曲线数据，可用于后续检查：
+
+```matlab
+[fig, curves] = mathpicasso('Visible','off','Export',false);
+close(fig);
+```
+
+验证记录见 [docs/validation.txt](docs/validation.txt)，公式对照见 [docs/formulas.md](docs/formulas.md)。R2020a 是接口需求下限；实际记录的验证版本为 R2026b，跨版本执行尚未验证。
 
 ## 来源与转换
 
